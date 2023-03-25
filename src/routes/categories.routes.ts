@@ -1,23 +1,19 @@
 import { Router } from "express";
-import { v4 as uuidv4 } from "uuid";
-import { Category } from "../model/Category";
+import { CategoryRepository } from "../repositories/CategoryRepository";
 
 const categoriesRoutes = Router();
+const categoriesRepository = new CategoryRepository();
 
-const categories: Category[] = [];
 categoriesRoutes.post("/", (request, response) => {
   const { name, description } = request.body;
-  const category = new Category();
 
-  Object.assign(category,  {
-    name,
-    description,
-    created_at: new Date()
-  })
+  categoriesRepository.create({ name, description });
+  return response.status(201).send();
+});
 
-  categories.push(category);
-
-  return response.status(201).json({category});
+categoriesRoutes.get("/", (request, response) => {
+  const all = categoriesRepository.list()
+  return response.json(all);
 });
 
 export { categoriesRoutes };
