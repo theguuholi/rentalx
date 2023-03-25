@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs"
-  },
-  "esModuleInterop": true,
-  "skiplibCheck": true,
-  "forceConsistentCastingInFileNames": true
+      "noImplicitAny": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "moduleResolution": "node",
+      "module": "commonjs",
+      "target": "es6"
+  }
 }
