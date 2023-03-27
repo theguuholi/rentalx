@@ -1,15 +1,22 @@
 import { Category } from "../model/Category";
 import { ICreateCategoryDTO } from "./ICategoryRepository";
 
-
 class CategoryRepository {
   private categories: Category[];
+  private static INSTANCE: CategoryRepository;
 
-  constructor() {
+  private constructor() {
     this.categories = [];
   }
 
-  create({name, description} : ICreateCategoryDTO): void {
+  public static getInstance(): CategoryRepository {
+    if (!CategoryRepository.INSTANCE) {
+      CategoryRepository.INSTANCE = new CategoryRepository();
+    }
+    return CategoryRepository.INSTANCE;
+  }
+
+  create({ name, description }: ICreateCategoryDTO): void {
     const category = new Category();
 
     Object.assign(category, {
@@ -22,13 +29,13 @@ class CategoryRepository {
   }
 
   list(): Category[] {
-    console.log(this.categories)
+    console.log(this.categories);
     return this.categories;
   }
 
   findByName(name: string): Category {
     const category = this.categories.find((category) => category.name === name);
-    return category
+    return category;
   }
 }
 
