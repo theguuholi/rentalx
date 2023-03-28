@@ -29,7 +29,6 @@ class SpecificationRepository {
   }
 
   list(): Specification[] {
-    console.log(this.specifications)
     return this.specifications;
   }
 
