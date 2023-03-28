@@ -1,34 +1,41 @@
-import { Category } from "../../model/Category";
+import { Specification } from "../../model/Specification";
 import { ICreateSpecificationDTO } from "../ISpecificationRepository";
 
-
 class SpecificationRepository {
-  private categories: Category[];
+  private specifications: Specification[];
+  private static INSTANCE: SpecificationRepository;
 
-  constructor() {
-    this.categories = [];
+  private constructor() {
+    this.specifications = [];
+  }
+
+  public static getInstance(): SpecificationRepository {
+    if (!SpecificationRepository.INSTANCE) {
+      SpecificationRepository.INSTANCE = new SpecificationRepository();
+    }
+    return SpecificationRepository.INSTANCE;
   }
 
   create({name, description} : ICreateSpecificationDTO): void {
-    const category = new Category();
+    const specification = new Specification();
 
-    Object.assign(category, {
+    Object.assign(specification, {
       name,
       description,
       created_at: new Date(),
     });
 
-    this.categories.push(category);
+    this.specifications.push(specification);
   }
 
-  list(): Category[] {
-    console.log(this.categories)
-    return this.categories;
+  list(): Specification[] {
+    console.log(this.specifications)
+    return this.specifications;
   }
 
-  findByName(name: string): Category {
-    const category = this.categories.find((category) => category.name === name);
-    return category
+  findByName(name: string): Specification {
+    const Specification = this.specifications.find((Specification) => Specification.name === name);
+    return Specification
   }
 }
 
