@@ -29,7 +29,6 @@ class CategoryRepository {
   }
 
   list(): Category[] {
-    console.log(this.categories);
     return this.categories;
   }
 
