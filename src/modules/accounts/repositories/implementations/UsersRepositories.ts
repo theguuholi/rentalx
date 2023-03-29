@@ -8,6 +8,10 @@ class UsersRepositories implements IUsersRepository {
   constructor() {
     this.repository = getRepository(User);
   }
+  async findByEmail(email: string): Promise<User> {
+    const user = await this.repository.findOne({ email });
+    return user;
+  }
   async create({
     name,
     email,
@@ -25,4 +29,4 @@ class UsersRepositories implements IUsersRepository {
   }
 }
 
-export {UsersRepositories}
+export { UsersRepositories };
