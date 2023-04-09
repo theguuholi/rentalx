@@ -6,8 +6,15 @@
       "moduleResolution": "node",
       "module": "commonjs",
       "target": "es6",
+      "paths": {
+        "@modules/*": ["modules/*"], //todo do it if you want to use paths easily
+        "@config/*": ["config/*"],
+        "@shared/*": ["shared/*"],
+        "@utils/*": ["utils/*"],
+        "@errors/*": ["errors/*"],
+      },
       "resolveJsonModule": true,
-      "baseUrl": ".",
+      "baseUrl": "./src",
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true
   }
