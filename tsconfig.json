@@ -1,21 +1,24 @@
 {
   "compilerOptions": {
-      "noImplicitAny": true,
-      "esModuleInterop": true,
-      "allowSyntheticDefaultImports": true,
-      "moduleResolution": "node",
-      "module": "commonjs",
-      "target": "es6",
-      "paths": {
-        "@modules/*": ["modules/*"], //todo do it if you want to use paths easily
-        "@config/*": ["config/*"],
-        "@shared/*": ["shared/*"],
-        "@utils/*": ["utils/*"],
-        "@errors/*": ["errors/*"],
-      },
-      "resolveJsonModule": true,
-      "baseUrl": "./src",
-      "experimentalDecorators": true,
-      "emitDecoratorMetadata": true
+    "target": "es6",
+    "module": "commonjs",
+    "rootDir": "./",
+    "baseUrl": "./src",
+    "paths": {
+      "@modules/*": ["modules/*"], //todo do it if you want to use paths easily
+      "@config/*": ["config/*"],
+      "@shared/*": ["shared/*"],
+      "@utils/*": ["utils/*"],
+      "@errors/*": ["errors/*"]
+    },
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true
   }
 }

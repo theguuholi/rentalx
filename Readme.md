@@ -1,3 +1,5 @@
+ yarn typeorm migration:run
+
 1. Testes unitarios
 - pedacos de codigo 
 
@@ -16,3 +18,10 @@ old configs package.json
     // "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     // "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
 
+Requisitos ====
+
+**RF** = Requisitos funcionais
+
+**RNF** = Requisitos nao funcionais
+
+**RN** = Regras de negocio
