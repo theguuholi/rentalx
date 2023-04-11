@@ -1,5 +1,7 @@
+import { Car } from "@modules/cars/infra/typeorm/entities/Car";
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
-import { injectable } from "tsyringe";
+import { AppError } from "@shared/errors/AppError";
+import { inject, injectable } from "tsyringe";
 
 interface IRequest {
   name: string;
@@ -10,20 +12,24 @@ interface IRequest {
   brand: string;
   category_id: string;
 }
-// @injectable()
+@injectable()
 class CreateCarUseCase {
   constructor(
-    // @inject("CarsRepository") 
+    @inject("CarsRepository") 
     private carsRepository: ICarsRepository
   ){}
   
-  async execute(request: IRequest): Promise<void> {
-    this.carsRepository.create(request)
+  async execute(request: IRequest): Promise<Car> {
+    const carAlreadyExist = await this.carsRepository.findByLicensePlate(request.license_plate)
+
+    if(carAlreadyExist) {
+      throw new AppError("Car already Exist!")
+    }
+    
+    const car = this.carsRepository.create(request)
+    return car;
   }
 }
 
 export { CreateCarUseCase };
-  function inject(arg0: string): (target: typeof CreateCarUseCase, propertyKey: undefined, parameterIndex: 0) => void {
-    throw new Error("Function not implemented.");
-  }
 

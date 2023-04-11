@@ -1,24 +1,32 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "rootDir": "./",
-    "baseUrl": "./src",
-    "paths": {
-      "@modules/*": ["modules/*"], //todo do it if you want to use paths easily
-      "@config/*": ["config/*"],
-      "@shared/*": ["shared/*"],
-      "@utils/*": ["utils/*"],
-      "@errors/*": ["errors/*"]
-    },
-    "noImplicitAny": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true
-  },
+       "target": "es2016",
+       "experimentalDecorators": true,
+       "emitDecoratorMetadata": true,
+       "module": "commonjs",
+       "rootDir": "./",  
+       "baseUrl": "./src",
+       "paths": {
+           "@modules/*": [
+               "modules/*"
+           ],
+           "@config/*": [
+               "config/*"
+           ],
+           "@shared/*": [
+               "shared/*"
+           ],
+           "@errors/*": [
+               "errors/*"
+           ],
+           "@utils/*": [
+               "utils/*"
+           ]
+       },
+       "resolveJsonModule": true,
+       "outDir": "./dist",
+       "esModuleInterop": true,
+       "forceConsistentCasingInFileNames": true,
+       "skipLibCheck": true
+   }
 }
