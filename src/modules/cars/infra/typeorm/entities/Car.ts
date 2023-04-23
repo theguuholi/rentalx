@@ -1,11 +1,18 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 import { Category } from "./Category";
 
 @Entity("cars")
 class Car {
   @PrimaryColumn()
-  id?: string;
+  id: string;
 
   @Column()
   name: string;
@@ -28,7 +35,7 @@ class Car {
   category_id: string;
 
   @Column()
-  available = true;
+  available: boolean;
 
   @CreateDateColumn()
   created_at: Date;
@@ -36,8 +43,9 @@ class Car {
   constructor() {
     if (!this.id) {
       this.id = uuidv4();
+      this.available = true
     }
   }
 }
 
-export { Car }
+export { Car };
