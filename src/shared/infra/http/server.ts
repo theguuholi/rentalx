@@ -10,7 +10,8 @@ import createConnection from "@shared/infra/typeorm";
 import "../../container";
 import { AppError } from "../../errors/AppError";
 
-createConnection();
+console.log(process.env.host)
+createConnection(process.env.host);
 const app = express();
 
 app.use(express.json());
