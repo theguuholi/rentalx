@@ -30,6 +30,11 @@ categoriesRoutes.post(
   importCategoryController.handle
 );
 
-categoriesRoutes.get("/", listCategoriesController.handle);
+categoriesRoutes.get(
+  "/",
+  ensureAuthenticated,
+  ensureAdmin,
+  listCategoriesController.handle
+);
 
 export { categoriesRoutes };
