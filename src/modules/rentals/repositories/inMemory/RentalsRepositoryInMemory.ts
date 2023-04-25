@@ -25,7 +25,6 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
 
     Object.assign(rental, { ...data, start_date: new Date() });
     this.rentals.push(rental);
-    console.log(rental);
 
     return rental;
   }

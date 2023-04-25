@@ -8,7 +8,6 @@ export { Request, Response } from "express";
 class UploadCarImageController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
-    console.log(request.files)
     const images = request.files as IFiles[];
     const uploadCarImageUseCase = container.resolve(UploadCarImageUseCase);
 
