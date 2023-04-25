@@ -6,6 +6,7 @@ interface ICreateRentalDTO {
   expected_return_date: Date;
 }
 interface IRentalsRepository {
+  findByID(id: string): Promise<Rental>;
   create(data: ICreateRentalDTO): Promise<Rental>;
   findOpenRentalByUser(user_id: string): Promise<Rental>;
   findByCar(car_id: string): Promise<Rental>;
