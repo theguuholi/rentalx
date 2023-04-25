@@ -13,11 +13,12 @@ interface IRequest {
   expected_return_date: Date;
 }
 
-// @injectable()
+@injectable()
 export class CreateRentalUseCase {
   constructor(
-    // @inject("RentalsRepository")
+    @inject("RentalsRepository")
     private rentalsRepository: IRentalsRepository,
+    @inject("DateProvider")
     private dateProvider: IDateProvider
   ) {}
   async execute(data: IRequest): Promise<Rental> {
