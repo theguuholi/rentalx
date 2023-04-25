@@ -6,6 +6,7 @@ import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { AppError } from "@shared/errors/AppError";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
+import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 
 interface IRequest {
   user_id: string;
@@ -19,7 +20,9 @@ export class CreateRentalUseCase {
     @inject("RentalsRepository")
     private rentalsRepository: IRentalsRepository,
     @inject("DateProvider")
-    private dateProvider: IDateProvider
+    private dateProvider: IDateProvider,
+    @inject("CarsRepository")
+    private carsRepository: ICarsRepository
   ) {}
   async execute(data: IRequest): Promise<Rental> {
     const minHours = 24;
@@ -49,6 +52,8 @@ export class CreateRentalUseCase {
     }
 
     const rental = await this.rentalsRepository.create(data);
+
+    await this.carsRepository.updateAvailable(data.car_id, false);
     return rental;
   }
 }
