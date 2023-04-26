@@ -2,12 +2,14 @@ import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
-import { inject } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 
 interface IRequest {
   id: string;
   user_id: string;
 }
+
+@injectable()
 export class ReturnCarUseCase {
   constructor(
     @inject("RentalsRepository")

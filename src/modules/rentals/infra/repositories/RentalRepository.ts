@@ -6,6 +6,8 @@ interface ICreateRentalDTO {
   car_id: string;
   user_id: string;
   expected_return_date: Date;
+  id?: string;
+  end_date?: string;
 }
 
 export class RentalsRepository implements IRentalsRepository {
@@ -23,11 +25,21 @@ export class RentalsRepository implements IRentalsRepository {
   }
 
   async findOpenRentalByUser(user_id: string): Promise<Rental> {
-    return await this.repository.findOne({ user_id });
+    return await this.repository.findOne({
+      where: {
+        user_id,
+        end_date: null,
+      },
+    });
   }
 
   async findByCar(car_id: string): Promise<Rental> {
-    return await this.repository.findOne({ car_id });
+    return await this.repository.findOne({ 
+      where: {
+        car_id,
+        end_date: null
+      }
+     });
   }
 
   async findByID(id: string): Promise<Rental> {

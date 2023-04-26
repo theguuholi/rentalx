@@ -7,6 +7,7 @@ interface ICreateRentalDTO {
   expected_return_date: Date;
 }
 class RentalsRepositoryInMemory implements IRentalsRepository {
+
   rentals: Rental[] = [];
 
   async findOpenRentalByUser(user_id: string): Promise<Rental> {
@@ -27,6 +28,11 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
     this.rentals.push(rental);
 
     return rental;
+  }
+
+  async findByID(id: string): Promise<Rental> {
+    
+  return await 
   }
 }
 
