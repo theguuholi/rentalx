@@ -8,6 +8,7 @@ interface ICreateRentalDTO {
   end_date?: string;
 }
 interface IRentalsRepository {
+  findByUserId(user_id: string): Promise<Rental[]>;
   findByID(id: string): Promise<Rental>;
   create(data: ICreateRentalDTO): Promise<Rental>;
   findOpenRentalByUser(user_id: string): Promise<Rental>;

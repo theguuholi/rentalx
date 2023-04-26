@@ -34,15 +34,24 @@ export class RentalsRepository implements IRentalsRepository {
   }
 
   async findByCar(car_id: string): Promise<Rental> {
-    return await this.repository.findOne({ 
+    return await this.repository.findOne({
       where: {
         car_id,
-        end_date: null
-      }
-     });
+        end_date: null,
+      },
+    });
   }
 
   async findByID(id: string): Promise<Rental> {
     return await this.repository.findOne(id);
+  }
+
+  async findByUserId(user_id: string): Promise<Rental[]> {
+    return await this.repository.find({ 
+      where: {
+        user_id
+      },
+      relations: ["car"]
+     });
   }
 }
